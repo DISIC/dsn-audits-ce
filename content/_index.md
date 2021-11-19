@@ -1,6 +1,6 @@
 +++
 title = "Accueil"
-description = "Audits pour le Conseil d'État (ministère de la Justice)"
+description = "Conseil d'État (ministère de la Justice) – Mise en conformité de démarches en ligne"
 type = "projects"
 +++
 
