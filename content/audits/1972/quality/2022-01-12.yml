@@ -1,0 +1,52 @@
+---
+- pages:
+  - name: Global au site
+    blocks:
+    - name: Page
+      errors:
+        - name: Structure sémantique
+          description: Absence des éléments `<header>`, `<main>` et `<footer>`
+          criterion: '9.2'
+          type: structure
+          delivery: lot 1
+        - name: Menu d’évitement
+          description: Manque un menu d’évitement
+          criterion: '12.7'
+          type: structure
+          delivery: lot 1
+    - name: Header
+      errors:
+        - name: Menu 
+          description: 'expliciter le lien "déconnexion". Par exemple : "Déconnexion de mon espace personnel."'
+          criterion: '6.1'
+          type: structure
+          delivery: lot 1
+    - name: Footer
+      errors:
+        - name: Liens
+          description: Les liens du pied de page n'ont pas un contraste élevé (ratio de 2.55)
+          criterion: '3.2'
+          type: visuel
+          delivery: lot 1
+    - name: Menu de navigation
+      errors:
+        - name: Listes
+          description: Supprimer la `<li>` vide contenant le pipe et faire la séparation en CSS.
+          criterion: '9.3'
+          type: structure
+          delivery: lot 1
+  - name: Accueil avec liste des dossiers (connecté)
+    url: https://citoyens.recette.telerecours.fr/#/accueil
+    blocks:
+      - name: Contenu
+        errors:
+          - name: Bloc "Bienvenue sur Télérecours citoyens"
+            description: La note de l'astérisque * `<p _ngcontent-c7="""" class=""hors-pers-m"">` (ratio de 2.77)"
+            type: visuel
+            criterion: 3.2
+            delivery: lot 1
+          - name: Zone de filtrage des dossiers
+            description: le champ de sélection des dossiers n'est pas assez contrasté. On ne distingue pas la bordure du champ.
+            type: visuel
+            criterion: 3.3
+            delivery: lot 1
