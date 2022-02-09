@@ -19,13 +19,6 @@
           criterion: '13.1'
           type: code
           delivery: lot 1
-    - name: Header
-      errors:
-        - name: Menu 
-          description: 'expliciter le lien "déconnexion". Par exemple : "Déconnexion de mon espace personnel."'
-          criterion: '6.1'
-          type: structure
-          delivery: lot 1
     - name: Footer
       errors:
         - name: Liens
@@ -40,6 +33,11 @@
           delivery: lot 1
     - name: Menu de navigation (desktop)
       errors:
+        - name: Menu 
+          description: 'expliciter le lien "déconnexion". Par exemple : "Déconnexion de mon espace personnel."'
+          criterion: '6.1'
+          type: structure
+          delivery: lot 1
         - name: Menu
           description: Supprimer la `<li>` vide contenant le pipe et faire la séparation en CSS.
           criterion: '9.3'
