@@ -58,11 +58,23 @@
   - name: Accueil avec liste des dossiers (connecté)
     url: https://citoyens.recette.telerecours.fr/#/accueil
     blocks:
+      - name: Page 
+        errors: 
+          - name: Code de la page
+            description:  Valeurs d'attributs `id` qui ne sont pas reliés à un attribut `for`
+            type: code
+            criterion: 8.2
+            delivery: lot 1
+          - name: Titre de la page
+            description:  "Il manque l'information suivante : Accueil - Conseil d'Etat - Télérecours Citoyens"
+            type: texte
+            criterion: 8.6
+            delivery: lot 1
       - name: Contenu
         errors:
           - name: Bloc "Bienvenue sur Télérecours citoyens"
             description: La note de l'astérisque * `<p _ngcontent-c7="""" class=""hors-pers-m"">` (ratio de 2.77)"
-            type: texte
+            type: visuel
             criterion: 3.2
             delivery: lot 1
           - name: Zone de filtrage des dossiers
@@ -99,16 +111,6 @@
             description: L'utilisateur n'est pas averti du changement de données quand il sélectionne soit "tous les dossiers", "dossiers en cours" et "dossiers terminés". Ce n'est pas restitué par les TA.
             type: texte
             criterion: 7.4
-            delivery: lot 1
-          - name: Code de la page
-            description:  Valeurs d'attributs `id` qui ne sont pas reliés à un attribut `for`
-            type: code
-            criterion: 8.2
-            delivery: lot 1
-          - name: Titre de la page
-            description:  "Il manque l'information suivante : Accueil - Conseil d'Etat - Télérecours Citoyens"
-            type: texte
-            criterion: 8.6
             delivery: lot 1
           - name: Tableau sans CSS
             description:  Les icônes de tri disparaissent
