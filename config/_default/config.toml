@@ -11,5 +11,5 @@ path = 'github.com/disic/frago'
  home    = ["HTML","JSON"]
 
 [params]
-  organisation = "Conseil d'État"
+  organisation = "Le Conseil d'État"
   robots = "noindex, nofollow"

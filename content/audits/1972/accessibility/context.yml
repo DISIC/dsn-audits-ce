@@ -26,16 +26,16 @@ audits:
     technologies: ["HTML", "CSS", "JavaScript"]
     tools:
       [
-        "Wave",
         "HeadingsMap",
         "Web Developer Chrome extension",
         "Color Contrast Analyser",
+        "ArcToolkit",
       ]
     environment:
       [
-        "MacOS Catalina 10.15.7",
-        "Brave 1.29.77 Chromium: 93.0.4577.63",
-        "Safari Version 14.1.2 (15611.3.10.1.5, 15611)",
+        "MacOS BigSur 11.6.1",
+        "Version 98.0.4758.80",
+        "Safari Version 15.4",
       ]
   contact:
     email: __CONTACT_AUDIT_01_EMAIL__
