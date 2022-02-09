@@ -97,3 +97,43 @@
             type: texte
             criterion: 7.1
             delivery: lot 1
+          - name: Changement de contexte (tableau)
+            description: L'utilisateur n'est pas averti du changement de données quand il sélectionne soit "tous les dossiers", "dossiers en cours" et "dossiers terminés". Ce n'est pas restitué par les TA.
+            type: texte
+            criterion: 7.4
+            delivery: lot 1
+          - name: Code de la page
+            description:  Valeurs d'attributs `id` qui ne sont pas reliés à un attribut `for`
+            type: code
+            criterion: 8.2
+            delivery: lot 1
+          - name: Titre de la page
+            description:  "Il manque l'information suivante : Accueil - Conseil d'Etat - Télérecours Citoyens"
+            type: texte
+            criterion: 8.6
+            delivery: lot 1
+          - name: Tableau sans CSS
+            description:  Les icônes de tri disparaissent
+            type: texte
+            criterion: 10.2
+            delivery: lot 1
+          - name: Contenu sans CSS
+            description: L'accès aux boutons "Voir le dossier" et "Ajouter une pièce" disparaissent. 
+            type: texte
+            criterion: 10.3
+            delivery: lot 1
+          - name: Notes dans l'encadré "Bienvenue sur Télérecours citoyens"
+            description: L'astérique est une indication par la position et par la forme. Il faut soit intégrer la note à la suite du texte entre parenthèses, soit faire un système de mécanisme d'ancres permettant d'une part d'aller à la note et de revenir au contenu. 
+            type: texte
+            criterion: 10.9
+            delivery: lot 1
+          - name: Tri dans le tableau
+            description: L'information est donnée uniquement par la forme lors du tri des colonnes du tableau.
+            type: texte
+            criterion: 10.9
+            delivery: lot 1
+          - name: Tri dans le tableau (formulaire)
+            description: L'étiquette du champ de filtrage n'est pas relié au `<select>`. Il manque un attribut `id="statutFilter"` pour lier le `<label>` au `<select>`
+            type: code
+            criterion: 11.1
+            delivery: lot 1
