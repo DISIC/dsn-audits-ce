@@ -4,7 +4,7 @@
     blocks:
     - name: Page
       errors:
-        - name: Structure sémantique
+        - name: Structure du document
           description: Absence des éléments `<header>`, `<main>` et `<footer>`
           criterion: '9.2'
           type: structure
@@ -13,6 +13,11 @@
           description: Manque un menu d’évitement
           criterion: '12.7'
           type: structure
+          delivery: lot 1
+        - name: Pages (où l'utilisateur est connecté)
+          description: L'utilisateur n'a pas le contrôle de la limite de temps (20 minutes)
+          criterion: '13.1'
+          type: code
           delivery: lot 1
     - name: Header
       errors:
@@ -28,12 +33,29 @@
           criterion: '3.2'
           type: visuel
           delivery: lot 1
-    - name: Menu de navigation
+        - name: Pied de page
+          description: aucune liste utilisée pour les liens, il faut mettre une liste non ordonnée
+          criterion: '9.3'
+          type: code
+          delivery: lot 1
+    - name: Menu de navigation (desktop)
       errors:
-        - name: Listes
+        - name: Menu
           description: Supprimer la `<li>` vide contenant le pipe et faire la séparation en CSS.
           criterion: '9.3'
           type: structure
+          delivery: lot 1
+    - name: Menu de navigation (mobile)
+      errors:
+        - name: Bouton du menu
+          description: Le menu burger devrait être un bouton `<button>` et supprimer `tabindex="-1"`. L'intitulé du menu n'est pas explicite (actuellement `aria-label="Toggle navigation"`), Remplacer par "Menu de navigation principale".
+          criterion: '7.1'
+          type: code
+          delivery: lot 1
+        - name: Navigation au clavier
+          description: Le menu burger n'est pas accessible au clavier (absence de `href` sur l'élément `<a>`).
+          criterion: '7.3'
+          type: code
           delivery: lot 1
   - name: Accueil avec liste des dossiers (connecté)
     url: https://citoyens.recette.telerecours.fr/#/accueil
@@ -42,11 +64,36 @@
         errors:
           - name: Bloc "Bienvenue sur Télérecours citoyens"
             description: La note de l'astérisque * `<p _ngcontent-c7="""" class=""hors-pers-m"">` (ratio de 2.77)"
-            type: visuel
+            type: texte
             criterion: 3.2
             delivery: lot 1
           - name: Zone de filtrage des dossiers
             description: le champ de sélection des dossiers n'est pas assez contrasté. On ne distingue pas la bordure du champ.
             type: visuel
             criterion: 3.3
+            delivery: lot 1
+          - name: Tableau
+            description: Absence de titre de tableau
+            type: texte
+            criterion: 5.4
+            delivery: lot 1
+          - name: Tableau
+            description: Il n'y a pas lieu d'utiliser la valeur `grid` dans les role. Ici, c'est un tableau de données. Il aurait fallu utiliser `role="table"` par exemple. [Voir modèle de cette page](https://www.w3.org/TR/wai-aria-practices/examples/table/sortable-table.html)
+            type: code
+            criterion: 5.6
+            delivery: lot 1
+          - name: Entête du tableau
+            description: La ligne d'en-tête des données n'est pas déclarée comme telle. 
+            type: code
+            criterion: 5.6
+            delivery: lot 1
+          - name: Bloc "Bienvenue sur Télérecours citoyens"
+            description: Les boutons "Entrer un code reçu par courrier" et "Déposer une nouvelle requête" devraient être des liens. Les icônes de décoration dans les boutons peuvent être restituées par les TA (ajouter un attribut `aria-hidden="true"` dans la balise `<i>`) et ils sont vides.
+            type: texte
+            criterion: 7.1
+            delivery: lot 1
+          - name: Tableaux
+            description: Les icônes de tri dans l'entête du tableau ne sont pas atteignables au clavier et peuvent être restituées par les TA (ajouter un `aria-hidden="true"` sur les `<span _ngcontent-c8="" class="fa fa-eye"></span>` et `<span _ngcontent-c8="" class="fa fa-paperclip"></span>`). Absence de nom accessible, de fonction et de changement d'état sur chacun des titres de l'entête du tableau lors du tri. Les boutons "ajouter une pièce" et "visualiser mon dossier" ne sont pas explicites. Par exemple, sur la première ligne, on pourrait mettre `<button " title="Visualiser mon dossier 2200373">` et `<button title="Ajouter une pièce au dossier 2200373">`. Les `<button>` présents dans le tableau devraient être des liens sémantiquement parlant.
+            type: texte
+            criterion: 7.1
             delivery: lot 1
