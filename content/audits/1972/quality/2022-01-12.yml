@@ -22,6 +22,7 @@
     - name: Footer
       errors:
         - name: Liens
+          status: moindre
           description: Les liens du pied de page n'ont pas un contraste élevé (ratio de 2.55)
           criterion: '3.2'
           type: visuel
