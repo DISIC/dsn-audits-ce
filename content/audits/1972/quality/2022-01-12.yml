@@ -240,7 +240,7 @@
         criterion: '11.1'
         type: code
         delivery: Majeur
-  - name: Création de compte (personne  morale)
+  - name: Création de compte (personne morale)
     url: https://citoyens.recette.telerecours.fr/#/register/morale
     blocks:
     - name: Page 
@@ -371,11 +371,11 @@
         delivery: Majeur
     - name: Contenu
       errors:
-        - name: Texte
-          description: Il faut mettre le texte dans un élément de paragraphe `<p>`
-          criterion: '8.9'
-          type: code
-          delivery: Mineur
+      - name: Texte
+        description: Il faut mettre le texte dans un élément de paragraphe `<p>`
+        criterion: '8.9'
+        type: code
+        delivery: Mineur
   - name: Mentions légales
     url: https://citoyens.recette.telerecours.fr/#/mentions-legales
     blocks:
@@ -463,7 +463,7 @@
         criterion: '9.3'
         type: code
         delivery: Majeur
-      - name: Disparition d'infos
+      - name: Perte d'infos
         description: Le pictogramme de la loupe disparait. Le lien ""Remonter en haut de la page"" disparait. Dans le bloc "Je trouve pas de réponse à ma question“,les informations concernant les numéros spéciaux disparaissent.
         criterion: '10.2'
         type: code
@@ -511,90 +511,611 @@
   - name: Visualisation d'un dossier
     url: https://citoyens.recette.telerecours.fr/#/historique/1175
     blocks:
-    - name: Page 
+    - name: Contenu 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Images
+        description: L'icône de décoration de la localisation de juridiction peut être restituée aux lecteurs d'écran. Ajouter l'attribut suivant `aria-hidden="true"` et mettre un texte caché avec la class css .sr-only (voir plus d'infos)[https://a11y-guidelines.orange.com/fr/web/exemples-de-composants/masquage-accessible/]. Dans le bloc Alerte, l'icône décorative du bloc peut être restituée aux TA. Ajouter l'attribut `aria-hidden="true"`.
+        criterion: '1.2'
+        type: code
+        delivery: Majeur
+      - name: Contrastes
+        description: Les titres de blocs comme "état du dossier", "nom du dossier", "requérants", les dates des dossiers ne sont pas assez contrastés (ratio de 3.2). Les textes "de", "à" ainsi que l'accusé de lecture et la date du dossier ne sont pas assez contrastés (ratio de 3.2). Dans la modale, le contraste du label n'est pas assez fort (ratio de 3.3).
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Liens
+        description:  L'icône de décoration ""+"" du lien ""Ajouter un dossier / pièce"peut être restituée aux TA. Ajouter l'attribut `aria-hidden="true"` et le lien n'est pas explicite.
+        criterion: '6.1'
+        type: code
+        delivery: Bloquant
+      - name: Scripts
+        description: Le bouton "renommer le dossier" n'est pas restitué par les TA et n'est pas accessible au clavier. Le lien pour inverser l'ordre chronologique des dossiers n'est pas accessible au clavier et n'est pas restitué par les TA, le changement d'ordre chronologique n'est pas restitué par les TA. Dans la liste des documents attachés au dossier, le pictogramme œil n'a pas d'attribut `aria-hidden`.
+        criterion: '7.1'
+        type: code
+        delivery: Bloquant
+      - name: Modale
+        description: La modale n'a pas de nom accessible et n'est pas atteignable au clavier (reprendre le modèle d'implémentation des modales du W3C)[https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html]. Il n'est pas indiqué de confirmation pour l'ajout d'une information saisie dans la modale concernant le titre de dossier.
+        criterion: '7.1'
+        type: code
+        delivery: Bloquant
+      - name: Identification de la modale
+        description: Ajouter un attribut `aria-labelledby` sur l'élément `<h2>` du titre "Renommer votre dossier" pour le rattacher au conteneur de la modale.
+        criterion: '7.1'
+        type: code
+        delivery: Bloquant
+      - name: Texte en anglais
+        description: Le texte du bouton de fermeture de la modale est en anglais, l'attribut `aria-label` du bouton de fermeture de l'alerte est en anglais.
+        criterion: '8.7'
+        type: code
+        delivery: Bloquant
+      - name: Textes
+        description: La juridiction devrait être dans un élément `<p>`. Le texte du nom de dossier et du représentant devraient être dans un élément `<p>`
+        criterion: '8.9' 
+        type: code
+        delivery: Mineur
+      - name: Liste
+        description: Les dossiers doivent être classés dans une liste non numérotée, dans laquelle les informations du dossier sont classées dans une liste de description.
+        criterion: '9.3'
+        type: code
+        delivery: Majeur
+      - name: Perte d'infos
+        description: On ne voit plus les icônes de visualisation des documents rattachés au dossier
+        criterion: '10.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Liens invisibles
+        description: On ne voit pas la liste des liens des documents rattachés au dossier.
+        criterion: '10.6'
+        type: visuel
+        delivery: Bloquant
+      - name: Information par la position
+        description: L'ordre de tri des dossiers n'est indiqué que par la position de la flèche dans l'entête du tableau.
+        criterion: '10.9'
+        type: code
+        delivery: Majeur
+    - name: Page
+      errors:
+      - name: Titre de la page 
+        description: Le titre de la page devrait contenir le nom du site, mais aussi la référence du dossier. 
+        criterion: '8.6'
+        type: code
+        delivery: Bloquant
+      - name: Structure de la page
+        description: La structure de la page n'est pas cohérente. Le titre "Historique" devrait être placé plus en haut dans la page avant le titre de l'état du dossier et ne devrait pas contenir le lien de tri des dates de l'historique.
+        criterion: '9.2'
+        type: code
+        delivery: Majeur
+      - name: Ordre de tabulation
+        description: Il ne prend pas en compte l'accès au lien "renommer votre dossier". Le focus n'est pas capturé dans la modale à l'ouverture (ajouter attribut `aria-modal="true"` sur le conteneur principal. A la fermeture de la modale, on perd le focus, il revient sur le bouton ""jouter une pièce" et non pas sur la zone d'édition du nom de dossier".
+        criterion: '12.8'
+        type: code
+        delivery: Bloquant
   - name: Dépôt de requête - étape 1 Avertissement
     url: https://citoyens.recette.telerecours.fr/#/depot-requete/avertissement
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Navigation au clavier
+        description: L'ordre de tabulation n'est pas cohérent quand on passe d'une page à l'autre. Le focus n'est pas placé au début de la page mais sur le bouton "précédent" ou "suivant" (ca dépend d'où on vient)
+        type: code
+        criterion: '12.8'
+        delivery: Bloquant
+    - name: Contenu
+      errors:
+      - name: Icônes de décoration
+        description: Dans le bloc d'alerte de cases à cocher pour valider le formulaire, l'icône peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`
+        criterion: '1.2'
+        type: visuel
+        delivery: Majeur
+      - name: Indication par la couleur
+        description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné
+        criterion: '3.1'
+        type: visuel
+        delivery: Bloquant
+      - name: Contrastes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). et le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. 
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Boutons
+        description: Les boutons "Précédent" / "Suivant" ne sont pas explicites. Ca devrait être des liens. Expliciter par exemple, "Précédent - Retour à la liste des dossiers" ou "Suivant - Etape 2 - Requérant". L'icône peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`.
+        criterion: '7.1'
+        type: code 
+        delivery: Bloquant
+      - name: Titre de la page
+        description: Le titre n'est pas pertinent. On ne sait pas qu'on est dans la catégorie du dépôt d'une requête - avertissement.
+        criterion: '8.6'
+        type: code
+        delivery: Majeur
+      - name: Listes
+        description: Dans le bloc de l'engagement du requérant, la liste est simulée. Ajouter une liste numérotée. Dans le bloc des références en bas de page, les liens peuvent être structurés sous forme de liste.
+        criterion: '9.3'
+        type: code
+        delivery: Majeur
+      - name: Visibilité des liens
+        description: Dans le bloc gris d'avertissement, le contraste de couleur entre le lien et le texte d'avertissement n'est pas assez contrasté (ratio de 2.9) alors qu'on a aussi focus et changement d'état au survol.
+        criterion: '10.6'
+        type: code
+        delivery: Bloquant
+      - name: Visibilité du focus
+        description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "précédent" et "suivant"
+        criterion: '10.7'
+        type: visuel
+        delivery: Bloquant
+      - name: Situation dans les étapes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, l'information ne peut pas être restituée par les TA. Ajouter un attribut `aria-current="step"`
+        criterion: '10.9'
+        type: visuel
+        delivery: Bloquant
   - name: Dépôt de requête - étape 2 requérant
     url: https://citoyens.recette.telerecours.fr/#/depot-requete/requerants
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Titre de la page
+        description: Le titre n'est pas pertinent. On ne sait pas qu'on est dans la catégorie du dépôt d'une requête - Requérant.
+        type: code
+        criterion: '8.6'
+        delivery: Bloquant
+      - name: Navigation au clavier
+        description: L'ordre de tabulation n'est pas cohérent quand on passe d'une page à l'autre. Le focus n'est pas placé au début de la page mais sur le bouton "précédent" ou "suivant" (ca dépend d'où on vient)
+        type: code
+        criterion: '12.8'
+        delivery: Bloquant
+    - name: Contenu
+      errors:
+      - name: Icônes de décoration
+        description: Dans le bloc d'alerte de cases à cocher pour valider le formulaire, l'icône peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`
+        criterion: '1.2'
+        type: visuel
+        delivery: Majeur
+      - name: Situation dans les étapes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, l'information ne peut pas être restituée par les TA. Ajouter un attribut `aria-current="step"`
+        criterion: '10.9'
+        type: visuel
+        delivery: Bloquant
+      - name: Indication par la couleur
+        description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné. Sur les boutons "En tant que requérant", "avec d'autres requérants" et "en tant que mandataire", l'info est véhiculée que par la couleur. Ajouter l'attribut `aria-current="true"` sur le bouton actif.
+        criterion: '3.1'
+        type: visuel
+        delivery: Bloquant
+      - name: Visibilité du focus
+        description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "précédent" et "suivant"
+        criterion: '10.7'
+        type: visuel
+        delivery: Bloquant
+      - name: Visibilité des liens
+        description: Dans le bloc gris d'avertissement, le contraste de couleur entre le lien et le texte d'avertissement n'est pas assez contrasté (ratio de 2.9) alors qu'on a aussi focus et changement d'état au survol.
+        criterion: '10.6'
+        type: code
+        delivery: Bloquant
+      - name: Listes
+        description: Ajouter une liste numérotée pour le dépôt du requérant et le type de requérant
+        criterion: '9.3'
+        type: code
+        delivery: Majeur
+      - name: Texte
+        description: Ajouter un élément `<p>` pour les informations du requérant et son adresse
+        criterion: '8.9'
+        type: code
+        delivery: Mineur
+      - name: Boutons
+        description: Les boutons "Précédent" / "Suivant" ne sont pas explicites. Ca devrait être des liens. Expliciter par exemple, "Précédent - Retour à la liste des dossiers" ou "Suivant - Etape 2 - Requérant". L'icône peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`. Pour le bouton "Modifier mes informations personnelles", ajouter un texte caché "Modifier mes informations personnelles" sur le bouton pour qu'il puisse être restitué par les TA.
+        criterion: '7.1'
+        type: code 
+        delivery: Bloquant
+      - name: Contrastes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
   - name: Dépôt de requête - étape 3 Juridiction
     url: https://citoyens.recette.telerecours.fr/#/depot-requete/juridiction
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Images de décoration
+        description: l'icône (pictogramme point d'interrogation) peut être restituée par les TA. Ajouter l'attribut `aria-hidden="true"` et ajouter un texte caché explicitant le contenu de l'image.
+        criterion: '1.2'
+        type: visuel
+        delivery: Majeur
+      - name: Titre de la page
+        description: Le titre n'est pas pertinent. On ne sait pas qu'on est dans la catégorie du dépôt d'une requête - Choix de la juridiction.
+        type: code
+        criterion: '8.6'
+        delivery: Bloquant
+    - name: Contenu
+      errors:
+      - name: Indication par la couleur
+        description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné. Les boutons "Tribunal administratif", "Cour administrative d'appel" et "Conseil d'état", l'info est véhiculée que par la couleur. Ajouter l'attribut `aria-current="true"` sur le bouton actif. Le label du champ de type de requête n'a pas un contraste élevé (ratio de 3.31).
+        criterion: '3.1'
+        type: visuel
+        delivery: Bloquant
+      - name: Contrastes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Liens
+        description: Le lien "cet article" dans l'aide de "Choississez la juridiction" n'est pas explicite. (ajouter un title qui reprend l'intitulé complet du lien avec une information supplémentaire sur la finalité du lien)
+        criterion: '6.1'
+        type: code
+        delivery: Bloquant
+      - name: Boutons
+        description: Les boutons "Précédent" / "Suivant" ne sont pas explicites. Ca devrait être des liens. Expliciter par exemple, "Précédent - Retour à la liste des dossiers" ou "Suivant - Etape 2 - Requérant". L'icône peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`. Les blocs de choix de juridiction ne sont pas compatibles avec les TA, ils sont pas accessibles au clavier.
+        criterion: '7.1'
+        type: code 
+        delivery: Bloquant
+      - name: Structure des titres
+        description: Les titres "tribunal administratif", "cour administrative" et "conseil d'état" ne doivent pas être des titres.
+        criterion: '9.2'
+        type: code
+        delivery: Majeur
+      - name: Perte d'infos
+        description: Les indications d'aide disparaissent quand la CSS est désactivée.
+        criterion: '10.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Contraste des liens
+        description: Le contraste de couleur entre le lien et le texte n'est pas assez contrasté (ratio de 2.9) alors qu'on a aussi focus et changement d'état au survol.
+        criterion: '10.6'
+        type: visuel 
+        delivery: Bloquant
+      - name: Visibilité du focus
+        description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "précédent", "enregistrer le brouillon" et "suivant" et les éléments focusables de la page (formulaire).
+        criterion: '10.7'
+        type: visuel
+        delivery: Bloquant
+      - name: Situation dans les étapes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, l'information ne peut pas être restituée par les TA. Ajouter un attribut `aria-current="step"`
+        criterion: '10.9'
+        type: visuel
+        delivery: Bloquant
+      - name: Navigation au clavier
+        description: L'ordre de tabulation n'est pas cohérent quand on passe d'une page à l'autre. Le focus n'est pas placé au début de la page mais sur le bouton "précédent" ou "suivant" (ca dépend d'où on vient)
+        type: code
+        criterion: '12.8'
+        delivery: Bloquant
+      - name: Navigation au clavier
+        description: Les indications (pictogramme point d'interrogation) d'aide ne sont pas accessibles au clavier.
+        criterion: '12.11'
+        type: code
+        delivery: Bloquant
   - name: Dépôt de requête - étape 4 Justificatifs
     url: https://citoyens.recette.telerecours.fr/#/depot-requete/justificatifs
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Images de décoration
+        description: l'icône (pictogramme point d'interrogation) peut être restituée par les TA. Ajouter l'attribut `aria-hidden="true"` et ajouter un texte caché explicitant le contenu de l'image.
+        criterion: '1.2'
+        type: visuel
+        delivery: Majeur
+      - name: Titre de la page
+        description: Le titre n'est pas pertinent. On ne sait pas qu'on est dans la catégorie du dépôt d'une requête - Ajout des justificatifs.
+        type: code
+        criterion: '8.6'
+        delivery: Bloquant
+      - name: Navigation au clavier
+        description: L'ordre de tabulation n'est pas cohérent quand on passe d'une page à l'autre. Le focus n'est pas placé au début de la page mais sur le bouton "précédent" ou "suivant" (ca dépend d'où on vient)
+        type: code
+        criterion: '12.8'
+        delivery: Bloquant
+    - name: Contenu
+      errors:
+      - name: Indication par la couleur
+        description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné. Les labels des champs du formulaire n'ont pas un contraste élevé (ratio de 3.31).
+        criterion: '3.1'
+        type: visuel
+        delivery: Bloquant
+      - name: Contrastes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Scripts
+        description: Les blocs drag-and-drop ne sont pas restitués par les TA. Exemples de drag-and-drop accessibles (Exemple 1)[https://www.smashingmagazine.com/2018/01/dragon-drop-accessible-list-reordering/] | (Exemple 2)[https://medium.com/salesforce-ux/4-major-patterns-for-accessible-drag-and-drop-1d43f64ebf09]. Les boutons Précédent / Suivant / Enregistrer le brouillon / Modifier mes informations personnelles, les icônes peuvent être restituées par les TA. Appliquer le style dans un élément <span> et ajouter l'attribut `aria-hidden="true"`
+        criterion: '7.1'
+        type: code
+        delivery: Bloquant
+      - name: Clavier
+        description: Les blocs drag-and-drop ne sont pas utilisables au clavier et l'information du poids du fichier et les boutons "voir" et "jeter" ne sont pas accessibles au clavier.
+        criterion: '7.3'
+        type: code
+        delivery: Bloquant
+      - name: Texte
+        description: Le message d'erreur dans de l'ajout de la pièce complémentaire n'est pas dans un élément `<p>`
+        criterion: '8.9'
+        type: code
+        delivery: Mineur
+      - name: Perte d'infos
+        description: Les indications d'aide disparaissent quand la CSS est désactivée.
+        criterion: '10.2'
+        type: code
+        delivery: Bloquant
+      - name: Contraste des liens
+        description: Le contraste de couleur entre le lien et le texte n'est pas assez contrasté (ratio de 2.9) alors qu'on a aussi focus et changement d'état au survol.
+        criterion: '10.6'
+        type: visuel 
+        delivery: Bloquant
+      - name: Visibilité du focus
+        description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "précédent", "enregistrer le brouillon" et "suivant" et les éléments focusables de la page (formulaire).
+        criterion: '10.7'
+        type: visuel
+        delivery: Bloquant
+      - name: Situation dans les étapes
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, l'information ne peut pas être restituée par les TA. Ajouter un attribut `aria-current="step"`
+        criterion: '10.9'
+        type: visuel
+        delivery: Bloquant
+    - name: Formulaire
+      errors:
+        - name: Etiquette
+          description: Les champs ont des labels mais ils ne sont pas rattachés aux inputs correspondant par le biais de `for/id`
+          criterion: '11.2'
+          type: code
+          delivery: Bloquant
+        - name: Intitulés des boutons
+          description: Expliciter les intitulés des boutons. Par exemple, "Envoyer mon dépôt de requête", ou "Page précédente - Justificatifs"
+          criterion: '11.9'
+          type: code
+          delivery: Majeur
   - name: Dépôt de requête - étape 5 Récapitulatif
     url: https://citoyens.recette.telerecours.fr/#/depot-requete/recapitulatif
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+        - name: Navigation au clavier
+          description: L'ordre de tabulation n'est pas cohérent quand on passe d'une page à l'autre. Le focus n'est pas placé au début de la page mais sur le bouton "précédent" ou "suivant" (ca dépend d'où on vient)
+          type: code
+          criterion: '12.8'
+          delivery: Bloquant
+        - name: Visibilité du focus
+          description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "précédent", "enregistrer le brouillon" et "suivant" et les éléments focusables de la page (formulaire).
+          criterion: '10.7'
+          type: visuel
+          delivery: Bloquant
+        - name: Titre de la page
+          description: Ajouter le nom du site "Télérecours Citoyens, et expliciter le titre de la page. Par exemple, "Récapitulatif du dépôt de requête - Télérecours Citoyens"
+          type: code
+          criterion: '8.6'
+          delivery: Bloquant
+    - name: Contenu
+      errors:
+        - name: Documents
+          description: Les documents PDF téléchargés ne sont pas accessibles
+          criterion: '13.3'
+          type: pdf
+          delivery: Bloquant 
+        - name: Intitulés des boutons
+          description: Expliciter les intitulés des boutons. Par exemple, "Envoyer mon dépôt de requête", ou "Page précédente - Justificatifs"
+          criterion: '11.9'
+          type: code
+          delivery: Majeur
+        - name: Contraste des liens
+          description: Le contraste de couleur entre le lien et le texte n'est pas assez contrasté (ratio de 2.9) alors qu'on a aussi focus et changement d'état au survol.
+          criterion: '10.6'
+          type: visuel 
+          delivery: Bloquant
+        - name: Perte d'infos
+          description: Les icônes pour visualiser les pièces jointes de la requête disparaissent.
+          criterion: '10.2'
+          type: code
+          delivery: Bloquant
+        - name: Boutons
+          description: Dans le bloc "Pièces obligatoires", le lien pour visualiser la pièce attachée au formulaire n'est pas explicite et n'est pas atteignable au clavier. Les boutons "Précédent" / "Suivant" / "Enregistrer le bouillon" / "Modifier mes informations personnelles", les icônes peuvent être restituées par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`. Les icônes de décoration présentes dans les boutons du formulaire peuvent être restituées par les TA. Ajouter un `aria-hidden="true"` sur chacune des icônes (placée dans un élément de type `<span>`)
+          criterion: '7.1'
+          type: code 
+          delivery: Bloquant
+        - name: Contrastes
+          description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
+          criterion: '3.2'
+          type: visuel
+          delivery: Bloquant
+        - name: Indication par la couleur
+          description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné. Les labels des champs du formulaire n'ont pas un contraste élevé (ratio de 3.31).
+          criterion: '3.1'
+          type: visuel
+          delivery: Bloquant
+    - name: Formulaire
+      errors:
+        - name: Etiquette
+          description: Les champs ont des labels mais ils ne sont pas rattachés aux inputs correspondant par le biais de `for/id`
+          criterion: '11.2'
+          type: code
+          delivery: Bloquant
+        - name: Contraste des éléments graphiques
+          description: Le bouton "Envoyer" du formulaire n'est pas assez contrasté (ratio de 4.9)
+          criterion: '3.3'
+          type: visuel
+          delivery: Bloquant
   - name: Mon compte
     url: https://citoyens.recette.telerecours.fr/#/mon-profil
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Images de décoration
+        description: l'icône  du bloc message d'alerte / erreur peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`
+        criterion: '1.2'
+        type: visuel
+        delivery: Majeur
+      - name: Code
+        description: Usage d'attributs non autorisés sur les champs du formulaire.
+        criterion: '8.2'
+        type: code
+        delivery: Bloquant
+      - name: Ordre de tabulation
+        description: La fonctionnalité "voir le mot de passe" (pictogramme "œil") n'est pas dans l'ordre de tabulation
+        criterion: '12.8'
+        type: code
+        delivery: Bloquant
+    - name: Contenu
+      errors:
+      - name: Champ mot de passe
+        description: L'icone (pictogramme œil) dans le champ de mot de passe = il n'y a que la couleur "bleue" qui indique le changement d'état de l'élément (actif / inactif). Mettre un icone plus explicite (œil barré / non barré) et associer un texte alternatif "afficher/cacher le mot de passe" selon l'état de l'élément".
+        type: visuel
+        criterion: '3.1'
+        delivery: Bloquant
+      - name: Contrastes 
+        description: le texte du message d'erreur n'est pas assez contrasté avec son arrière plan (3,9 au lieu de 4,5). Les libellés des champs du formulaire ont un ratio de contraste insuffisant entre le texte et le fond du champ (3,3 au lieu de 4,5).
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Contrastes des éléments graphiques
+        description: le contour autour des champs de formulaire a un ratio de contraste insuffisant (1,4 au lieu de 3). Le bouton "Enregistrer" a un ratio de contraste insuffisant entre le texte et la couleur (4,1 au lieu de 4,5).
+        criterion: '3.3'
+        type: visuel
+        delivery: Bloquant
+      - name: Liens
+        description: Le lien "Pourquoi" n'est pas explicite, l'intitulé n'explicite pas la destination finale du lien. Ajouter de l'information dans l'attribut `title` du lien.
+        criterion: '6.1'
+        type: code
+        delivery: Majeur
+      - name: Scripts
+        description: Les icônes de décoration dans les boutons peuvent être restituées. Ajouter l'attribut suivant `aria-hidden="true"`
+        criterion: '7.1'
+        type: code
+        delivery: Majeur
+      - name: Contraste des liens
+        description: Le lien "Pourquoi?" n'est pas visible par rapport au contenu.
+        criterion: '10.6' 
+        type: code
+        delivery: Bloquant
+      - name: Information par la forme
+        description: Le caractère obligatoire représenté par l'astérisque est une information donnée par la forme. Ajouter une phrase avant le formulaire explicitant bien la légende de cette information.
+        criterion: '10.9'
+        type: code
+        delivery: Majeur
+    - name: Formulaire
+      errors:
+      - name: Etiquettes
+        description: Aucun des champs a un libellé associé. Ajouter à chaque libellé un attribut `for` dont la valeur est égale à celle du champ associé.
+        criterion: '11.1'
+        type: code
+        delivery: Majeur
+      - name: Etiquette
+        description: l'étiquette "ancien mot de passe" pourrait être plus pertinent = "mot de passe actuel"
+        criterion: '11.2'
+        type: code
+        delivery: Bloquant
+      - name: Regroupement des champs
+        description: Les champs de même nature devraient avoir une légende. Les `<h2>` présents dans le formulaire devraient être des `<legend>` (Mes informations, Notification, Identifiants )
+        criterion: '11.5'
+        type: code
+        delivery: Majeur
+      - name: Intitulé du bouton
+        description: Changer l'intitulé du bouton "enregistrer" par "Sauvegarder mes informations"
+        criterion: '11.9'
+        type: code
+        delivery: Majeur
+      - name: Format attendu
+        description: Le message d'erreur ne contient pas d'indicationsur le format attendu sur l'adresse de messagerie ou numéro de téléphone.
+        criterion: '11.11'
+        type: code
+        delivery: Majeur
+      - name: Autocomplete
+        description: Les autocomplete utilisés ne sont pas tous bons. [Se référer à la liste officielle](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/methode-rgaa/glossaire/#liste-des-valeurs-possibles-pour-l-attribut-autocomplete)
+        criterion: '11.13'
+        type: code
+        delivery: Mineur
   - name: Rattacher un dossier à mon compte - étape 2 Saisie du Code
     url: https://citoyens.recette.telerecours.fr/#/rattachement/rejoindre-dossier
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Navigation au clavier
+        description: L'ordre de tabulation n'est pas cohérent quand on passe d'une page à l'autre. Le focus n'est pas placé au début de la page mais sur le bouton "précédent" ou "suivant" (ca dépend d'où on vient)
+        type: code
+        criterion: '12.8'
+        delivery: Bloquant
+      - name: Titre de la page
+        description: le titre de page "Saisie du code" n'est pas pertinent, il ne reprend pas le nom du site, ni le titre du processus en cours.
+        criterion: '8.6' 
+        type: code
+        delivery: Bloquant
+      - name: Navigation au clavier
+        description: Le bouton 'précédent' ne marche pas au clavier
+        criterion: '7.3'
+        type: code
+        delivery: Bloquant
+      - name: Boutons
+        description: Les boutons "Précédent" / "Suivant" ne sont pas explicites. Ca devrait être des liens. Expliciter par exemple, "Précédent - Retour à l'avertissement" ou "Suivant - Etape 2 - Saisie du code". L'icône peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`.
+        criterion: '7.1'
+        type: code 
+        delivery: Bloquant
+    - name: Formulaire
+      errors:
+      - name: Intitulé du bouton
+        description: Intitulé du bouton "Valider le/mon code" pas pertinent, il manque le contexte
+        criterion: '11.9'
+        type: code
+        delivery: Majeur
+      - name: Pertinence de l'étiquette
+        description: L'étiquette "code" n'est pas assez explicite, mettre "Mon code confidentiel" ou "Mon code Télérecours Citoyens"
+        criterion: '11.2'
+        type: code
+        delivery: Majeur
+    - name: Contenu
+      errors:
+      - name: Information par la forme/taille/position
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, l'information ne peut pas être restituée par les TA. Ajouter un attribut `aria-current="step"`. Dans le champ "code", le caractère obligatoire représenté par l'astérisque est une information donnée par la forme. Ajouter une phrase avant le formulaire explicitant bien la légende de cette information.
+        criterion: '10.9'
+        type: visuel
+        delivery: Majeur
+      - name: Listes
+        description: Dans le bloc de point d'étapes de "rattacher un dossier à mon compte", la liste devrait être une liste numérotée.
+        criterion: '9.3'
+        type: code
+        delivery: Majeur
+      - name: Contrastes
+        description: Le message d'information sur le code a un contraste insuffisant 2,9 entre le texte et l'arrière-plan au lieu de 4.5. Le bouton "Valider" a un ratio de contraste insuffisant entre le texte et la couleur (4,1 au lieu de 4,5).
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
+      - name: Indication par la couleur
+        description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné
+        criterion: '3.1'
+        type: visuel
+        delivery: Bloquant
+      - name: Images de décoration
+        description: l'icône  du bloc message d'alerte / erreur peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`
+        criterion: '1.2'
+        type: visuel
+        delivery: Majeur
   - name: Rattacher un dossier à mon compte - étape 3 Confirmation
     url: 
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Titre de la page
+        description: le titre de page "Confirmation" n'est pas pertinent, il ne reprend pas le nom du site, ni le titre du processus en cours. 
+        criterion: '8.6'
+        type: code
+        delivery: Bloquant  
+      - name: Visibilité du focus
+        description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "précédent", "enregistrer le brouillon" et "suivant" et les éléments focusables de la page (formulaire).
+        criterion: '10.7'
+        type: visuel
+        delivery: Bloquant
+      - name: Information par la forme/taille/position
+        description: Dans le bloc de point d'étapes de dépôt de requêtes, l'information ne peut pas être restituée par les TA. Ajouter un attribut `aria-current="step"`. Dans le champ "code", le caractère obligatoire représenté par l'astérisque est une information donnée par la forme. Ajouter une phrase avant le formulaire explicitant bien la légende de cette information.
+        criterion: '10.9'
+        type: visuel
+        delivery: Majeur
+    - name: Contenu
+      errors: 
+      - name: Images de décoration
+        description: l'icône "enveloppe" peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`
+        criterion: '1.2'
+        type: visuel
+        delivery: Majeur
+      - name: Indication par la couleur
+        description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné
+        criterion: '3.1'
+        type: visuel
+        delivery: Bloquant
+      - name: Contrastes
+        description: Le texte dans la partie de l'indication d'étapes n'est pas assez contrasté (ratio de 3.2 au lieu de 4,5).
+        criterion: '3.2'
+        type: visuel
+        delivery: Bloquant
