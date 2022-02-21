@@ -8,12 +8,12 @@
           description: Absence des éléments `<header>`, `<main>` et `<footer>`
           criterion: '9.2'
           type: structure
-          delivery: lot 1
-        - name: Menu d’évitement
+          delivery: Bloquant
+        - name: Accès rapide
           description: Manque un menu d’évitement
           criterion: '12.7'
           type: structure
-          delivery: lot 1
+          delivery: Majeur
         - name: Pages (où l'utilisateur est connecté)
           description: L'utilisateur n'a pas le contrôle de la limite de temps (20 minutes)
           criterion: '13.1'
@@ -23,12 +23,7 @@
           description: Absence de landmarks
           criterion: '12.6'
           type: structure
-          delivery: lot 1
-        - name: Accès rapide
-          description: Absence de liens d'évitement
-          criterion: '12.7'
-          type: code
-          delivery: lot 1
+          delivery: Bloquant
     - name: Footer
       errors:
         - name: Liens
@@ -36,39 +31,39 @@
           description: Les liens du pied de page n'ont pas un contraste élevé (ratio de 2.55)
           criterion: '3.2'
           type: visuel
-          delivery: lot 1
+          delivery: Bloquant
         - name: Pied de page
           description: aucune liste utilisée pour les liens, il faut mettre une liste non ordonnée
           criterion: '9.3'
           type: code
-          delivery: lot 1
+          delivery: Majeur
     - name: Header
       errors:
         - name: Bouton déconnexion (menu desktop)
           description: 'expliciter le lien "déconnexion". Par exemple : "Déconnexion de mon espace personnel."'
           criterion: '6.1'
           type: structure
-          delivery: lot 1
+          delivery: Majeur
         - name: Liste (menu desktop)
           description: Supprimer la `<li>` vide contenant le pipe et faire la séparation en CSS.
           criterion: '9.3'
           type: structure
-          delivery: lot 1
+          delivery: Majeur
         - name: Bouton (menu mobile)
           description: Le menu burger devrait être un bouton `<button>` et supprimer `tabindex="-1"`. L'intitulé du menu n'est pas explicite (actuellement `aria-label="Toggle navigation"`), Remplacer par "Menu de navigation principale".
           criterion: '7.1'
           type: code
-          delivery: lot 1
+          delivery: Bloquant
         - name: Navigation au clavier (menu mobile)
           description: Le menu burger n'est pas accessible au clavier (absence de `href` sur l'élément `<a>`).
           criterion: '7.3'
           type: code
-          delivery: lot 1
+          delivery: Bloquant
         - name: Menu (version mobile) 
           description: Absence d'attribut href sur un lien (du menu)
           criterion: '8.2'
           type: code
-          delivery: lot 1
+          delivery: Bloquant
   - name: Accueil avec liste des dossiers (connecté)
     url: https://citoyens.recette.telerecours.fr/#/accueil
     blocks:
@@ -78,104 +73,104 @@
             description:  Valeurs d'attributs `id` qui ne sont pas reliés à un attribut `for`
             type: code
             criterion: '8.2'
-            delivery: lot 1
+            delivery: majeur
           - name: Titre de la page
             description:  "Il manque l'information suivante : Accueil - Conseil d'Etat - Télérecours Citoyens"
             type: texte
             criterion: '8.6'
-            delivery: lot 1
+            delivery: majeur
           - name: Visibilité du focus
             description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "Entrer un code reçu par courrier", "Reprendre mon dépôt de requête" et "Déposer une nouvelle requête".
             criterion: '10.7'
             type: visuel
-            delivery: lot 1
+            delivery: Bloquant
       - name: Contenu
         errors:
           - name: Bloc "Bienvenue sur Télérecours citoyens"
             description: La note de l'astérisque * `<p _ngcontent-c7="""" class=""hors-pers-m"">` (ratio de 2.77)"
             type: visuel
             criterion: '3.2'
-            delivery: lot 1
+            delivery: Bloquant
           - name: Zone de filtrage des dossiers
             description: le champ de sélection des dossiers n'est pas assez contrasté. On ne distingue pas la bordure du champ. Absence de bordure sur l'élément `<select>`.
             type: visuel
             criterion: '3.3'
-            delivery: lot 1
+            delivery: Bloquant
           - name: Absence de titre de tableau
             description: Ajouter un attribut `aria-labelledby` sur l'élément `<h2>` précédant le `<table>` pour qu'il soit relié au tableau.
             type: texte
             criterion: '5.4'
-            delivery: lot 1
+            delivery: Majeur
           - name: Déclaration de la table
             description: Remplacer `role="grid"` par `role="table"`. [Voir modèle de cette page](https://www.w3.org/TR/wai-aria-practices/examples/table/sortable-table.html)
             type: code
             criterion: '5.6'
-            delivery: lot 1
+            delivery: Majeur
           - name: Entête du tableau
             description: La ligne d'en-tête des données n'est pas déclarée comme telle. 
             type: code
             criterion: '5.6'
-            delivery: lot 1
+            delivery: Majeur
           - name: Bloc "Bienvenue sur Télérecours citoyens"
             description: Les boutons "Entrer un code reçu par courrier" et "Déposer une nouvelle requête" devraient être des liens. Les icônes de décoration dans les boutons peuvent être restituées par les TA (ajouter un attribut `aria-hidden="true"` dans la balise `<i>`) et ils sont vides.
             type: texte
             criterion: '7.1'
-            delivery: lot 1
+            delivery: Majeur
           - name: Tableaux
             description: Les icônes de tri dans l'entête du tableau ne sont pas atteignables au clavier et peuvent être restituées par les TA (ajouter un `aria-hidden="true"` sur les `<span _ngcontent-c8="" class="fa fa-eye"></span>` et `<span _ngcontent-c8="" class="fa fa-paperclip"></span>`). Absence de nom accessible, de fonction et de changement d'état sur chacun des titres de l'entête du tableau lors du tri. Les boutons "ajouter une pièce" et "visualiser mon dossier" ne sont pas explicites. Par exemple, sur la première ligne, on pourrait mettre `<button " title="Visualiser mon dossier 2200373">` et `<button title="Ajouter une pièce au dossier 2200373">`. Les `<button>` présents dans le tableau devraient être des liens sémantiquement parlant.
             type: texte
             criterion: '7.1'
-            delivery: lot 1
+            delivery: Bloquant
           - name: Changement de contexte (tableau)
             description: L'utilisateur n'est pas averti du changement de données quand il sélectionne soit "tous les dossiers", "dossiers en cours" et "dossiers terminés". Ce n'est pas restitué par les TA.
             type: texte
             criterion: '7.4'
-            delivery: lot 1
+            delivery: Bloquant
           - name: Tableau sans CSS
             description:  Les icônes de tri disparaissent
             type: texte
             criterion: '10.2'
-            delivery: lot 1
+            delivery: Bloquant
           - name: Contenu sans CSS
             description: L'accès aux boutons "Voir le dossier" et "Ajouter une pièce" disparaissent. 
             type: texte
             criterion: '10.3'
-            delivery: lot 1
+            delivery: Bloquant
           - name: Notes dans l'encadré "Bienvenue sur Télérecours citoyens"
             description: L'astérique est une indication par la position et par la forme. Il faut soit intégrer la note à la suite du texte entre parenthèses, soit faire un système de mécanisme d'ancres permettant d'une part d'aller à la note et de revenir au contenu. 
             type: texte
             criterion: '10.9'
-            delivery: lot 1
+            delivery: Majeur
           - name: Tri dans le tableau
             description: L'information est donnée uniquement par la forme lors du tri des colonnes du tableau.
             type: texte
             criterion: '10.9'
-            delivery: lot 1
+            delivery: Majeur
           - name: Tri dans le tableau (formulaire)
             description: L'étiquette du champ de filtrage n'est pas relié au `<select>`. Il manque un attribut `id="statutFilter"` pour lier le `<label>` au `<select>`
             type: code
             criterion: '11.1'
-            delivery: lot 1
+            delivery: Majeur
           - name: Tableau 
             description: L'étiquette du champ de filtrage n'est pas relié au `<select>`. Il manque un attribut `id="statutFilter" pour lier le `<label>` au `<select>`.
             criterion: '11.1'
             type: code
-            delivery: lot 1
+            delivery: Majeur
           - name: Information donnée par la forme / position
             description: Dans le Bloc "Bienvenue", l'astérique est une indication par la position et par la forme. Il faut soit intégrer la note à la suite du texte entre parenthèses, soit faire un système de mécanisme d'ancres permettant d'une part d'aller à la note et de revenir au contenu. Dans le tableau, l'information est donnée uniquement par la forme lors du tri des colonnes du tableau.
             criterion: '10.9'
             type: visuel
-            delivery: lot 1
+            delivery: Majeur
           - name: Bloc "Bienvenue"
             description: Les boutons "Entrer un code reçu par courrier" et "Déposer une nouvelle requête" devraient être des liens. Les icônes de décoration dans les boutons peuvent être restituées par les TA (ajouter un attribut `aria-hidden="true"` dans la balise `<i>`) et ils sont vides.
             criterion: '7.1'
             type: code
-            delivery: lot 1
+            delivery: Bloquant
           - name: Tableau
             description: Les icônes de tri dans l'entête du tableau ne sont pas atteignables au clavier et peuvent être restituées par les TA (ajouter un `aria-hidden="true"` sur les `<span _ngcontent-c8="" class="fa fa-eye"></span>` et `<span _ngcontent-c8="" class="fa fa-paperclip"></span>`). Absence de nom accessible, de fonction et de changement d'état sur chacun des titres de l'entête du tableau lors du tri. Les boutons "ajouter une pièce" et "visualiser mon dossier" ne sont pas explicites. Par exemple, sur la première ligne, on pourrait mettre `<button " title="Visualiser mon dossier 2200373">` et `<button title="Ajouter une pièce au dossier 2200373">`. Les éléments `<button>`présents dans le tableau devraient être des liens.
             criterion: '7.1'
             type: code
-            delivery: lot 1
+            delivery: Bloquant
   - name: Authentification (connecté)
     url: https://citoyens.recette.telerecours.fr/#/authentication
     blocks:
@@ -185,41 +180,41 @@
         description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur le bouton "Je me connecte"
         type: visuel
         criterion: '10.7'
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Titre de page
         description: Le titre de page "Connexion" n'est pas pertinent, il ne reprend pas le nom du site. Titre correct = "Connexion | Télérecours citoyens | Conseil d'État"
         criterion: '8.8'
         type: code
-        delivery: Lot 1
+        delivery: Majeur
     - name: Contenu 
       errors:
       - name: Structure des titres 
         description: Ajouter des éléments `<h2>` sur les titres "Se connecter avec FranceConnect" et "Se connecter avec un compte Télérecours citoyens."
         criterion: '9.1'
         type: code
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Liste 
         description: Dans le bloc "Vous n'avez pas de compte ?", Ajouter une liste de description `<dl>` avec les questions dans des `<dt>` et réponses dans des `<dd>`.
         criterion: '9.3'
         type: code
-        delivery: Lot 1
+        delivery: Majeur
     - name: Formulaire
       errors:
       - name: Champ mot de passe
         description: L'icone (pictogramme œil) dans le champ de mot de passe = il n'y a que la couleur "bleue" qui indique le changement d'état de l'élément (actif / inactif). Mettre un icone plus explicite (œil barré / non barré) et associer un texte alternatif "afficher/cacher le mot de passe" selon l'état de l'élément".
         type: visuel
         criterion: '3.1'
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Contraste de couleur
         description: Dans les champs de connexion, les labels ne sont pas assez contrastés (ratio de 2.6) et le lien mot de passe n'est pas assez contrasté (ratio de 3.2). Dans le bloc "FranceConnect", le texte et lien sous le visuel ne sont pas assez contrastés (ratio de 3.2).
         criterion: '3.2'
         type: visuel
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Contraste des éléments graphiques
         description: Le contour autour des champs du formulaire de connexion a un ratio de contraste insuffisant (1,4 au lieu de 3).
         criterion: '3.3'
         type: visuel
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Scripts
         description: Dans le Champ "mot de passe", l'icône "œil" ne possède pas de texte alternatif précisant sa fonction. Il n'est pas non plus accessible au clavier. | Il devrait être un bouton avec soit = un texte qui change "afficher/masquer", soit un attribut `aria-pressed`. Absence de libellé sur le bouton "S'identifier avec FranceConnect"
         criterion: '7.1'
@@ -229,22 +224,22 @@
         description: Ajouter un élément `<p>` sur le texte
         criterion: '8.9'
         type: code
-        delivery: Lot 1
+        delivery: mineur
       - name: Perte de fonction
         description: On perd la fonction "afficher/cacher" le mot de passe sans le css, et le bouton France Connect a un nom accessible (aria-label) mais il est vide.
         criterion: '10.2'
         type: code
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Caractère obligatoire et message d'erreur
         description: Le caractère obligatoire de remplissage des champs n'est pas indiqué avant le formulaire. Le message d'erreur n'est pas relié aux champs à remplir.
         criterion: '11.10'
         type: code
-        delivery: Lot 1
+        delivery: Majeur
       - name: Format attendu
         description: Aucune indication permettant de corriger facilement, suggérer le format attendu du mail par exemple ou indiquer quel est le champ à remplir.
         criterion: '11.1'
         type: code
-        delivery: Lot 1
+        delivery: Majeur
   - name: Création de compte (personne  morale)
     url: https://citoyens.recette.telerecours.fr/#/register/morale
     blocks:
@@ -254,12 +249,12 @@
         description: Il n'y a pas de solution d'accès alternatif au contenu ou à la fonction du Captcha. Privilégier un captcha accessible ou ne pas en mettre.
         type: code
         criterion: '1.5'
-        delivery: Bloquant
+        delivery: Majeur
       - name: Infos sur le formulaire
         description: Le placeholder n'est autorisé que sur certains types de l'élément `<input>` (autorisé sur les types suivants "email, number, password, search, tel, text, ou url"). L'attribut `autocomplete` ne peut pas être utilisé quand l'attribut `type` du champ n'est pas défini. L'attribut `type` ne peut pas être indéfini.
         criterion: '8.2'
         type: code
-        delivery: Majeur
+        delivery: Mineur
       - name: Titre de la page
         description: Expliciter davantage le titre de la page sans oublier de préciser qu'on est sur le site de Télérecours Citoyens. Par exemple = "Création de compte de personne morale - Télérecours Citoyens"
         criterion: '8.6'
@@ -336,12 +331,12 @@
         description: Le contraste du message d'alerte n'est pas assez élevé (gris sur gris - ratio de 4). Le label n'a pas un contraste élevé (ratio de 3.31). Le message d'alerte du champ obligatoire n'a pas un contraste élevé (ratio de 3.87)
         type: visuel
         criterion: '3.2'
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Titre de la page
         description: Il manque le nom du site = Télérecours Citoyens
         criterion: '8.6'
         type: code
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Visibilité du focus
         description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur le boutons "Réinitialiser le mot de passe"
         criterion: '10.7'
@@ -353,34 +348,34 @@
         description: L'icône de décoration utilisée dans le message de validation d'envoi du formulaire peut être restituée aux TA. Il faut mettre l'icône dans un élément `<span>` avec l'attribut suivant `aria-hidden="true"`
         criterion: '1.2'
         type: visuel
-        delivery: Lot 1
+        delivery: Majeur
       - name: Contraste 
         description: Le contraste de couleur du message d'envoi n'est pas assez contrasté (blanc sur vert).
         criterion: '3.2'
         type: visuel
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Contraste d'élément graphique
         description: Le contraste du bouton de réinitialisation du mot de passe n'est pas assez élevé (ratio de 4.09 - blanc sur vert).
         criterion: '3.3'
         type: visuel
-        delivery: Lot 1
+        delivery: Bloquant
       - name: Scripts
         description: Les icônes de décoration peuvent être restituées. Ajouter l'attribut suivant 'aria-hidden="true"`
         criterion: '7.1'
         type: code
-        delivery: Lot 1
+        delivery: Majeur
       - name: Format attendu
         description: Il n'y a pas d'indication sur le format attendu de l'adresse email
         criterion: '11.11'
         type: code
-        delivery: Lot 1
+        delivery: Majeur
     - name: Contenu
       errors:
         - name: Texte
           description: Il faut mettre le texte dans un élément de paragraphe `<p>`
           criterion: '8.9'
           type: code
-          delivery: Lot 1
+          delivery: mineur
   - name: Mentions légales
     url: https://citoyens.recette.telerecours.fr/#/mentions-legales
     blocks:
@@ -390,12 +385,12 @@
         description: le titre de page "Connexion" n'est pas pertinent, il ne reprend pas le nom du site. Par exemple, "Mentions légales | Télérecours citoyens | Conseil d'Etat"
         criterion: '8.6'
         type: code
-        delivery: Lot 1
+        delivery: Majeur
       - name: Liste
         description: Dans le bloc "Conception et développement", ajouter une liste non ordonnée pour la liste des personnes 
         criterion: '9.3'
         type: code
-        delivery: Mineur
+        delivery: Majeur
       - name: Distinction lien
         description: Le contraste entre le lien "https://citoyens.telerecours.fr/" et le texte environnant n'est pas suffisant ( ratio de 2.6)
         criterion: '10.6'
@@ -411,11 +406,6 @@
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
       - name: Absence d'intitulé
         description: Le lien "Remonter en haut de la page" n'a pas d'intitulé
         criterion: '6.1'
@@ -431,13 +421,18 @@
         criterion: '9.1'
         type: code
         delivery: Bloquant
+      - name: Navigation au clavier
+        description: L'ordre de tabulation n'est pas cohérent car le lien "remonter vers le haut de la page" n'est pas pris en compte. 
+        criterion: '12.8'
+        type: code
+        delivery: Bloquant
     - name: Contenu
       errors:
       - name: Icônes de décoration
-        description: Dans les thématiques d'aide, mes icônes de décoration peuvent être restituées, ajouter l'attribut `aria-hidden="true"`. Les icônes de décoration ajoutées sur les numéros spéciaux peuvent être restituées, ajouter l'attribut `aria-hidden="true"` sur l'icône en forme de losange.
+        description: Dans les thématiques d'aide, les icônes de décoration peuvent être restituées, ajouter l'attribut `aria-hidden="true"`. Les icônes de décoration ajoutées sur les numéros spéciaux peuvent être restituées, ajouter l'attribut `aria-hidden="true"` sur l'icône en forme de losange.
         criterion: '1.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Contraste des éléments graphiques
         description: Dans le bloc de recherche, le contraste de la bordure des champs est insuffisant (ratio de 1.39).
         criterion: '3.3'
@@ -447,7 +442,7 @@
         description: Les liens qui ont le même intitulé ne renvoient pas sur la même adresse. Il faut soit expliciter le contenu du lien, soit reprendre le contenu du lien et le compléter dans l'attribut `title`
         criterion: '6.1'
         type: code
-        delivery: Bloquant
+        delivery: Majeur
       - name: Intitulé de lien
         description: Dans le bloc "Comment déposer une requête pour le compte d'une autre personne par Télérecours citoyens ?", supprimer les contenus de l'attribut `title` et les `titles`. 
         criterion: '6.1'
@@ -462,17 +457,57 @@
         description: Utiliser l'élément `<p>` pour les paragraphes (ces derniers étant regroupés par un élément `<div>`
         criterion: '8.9'
         type: code
-        delivery: Lot 1
+        delivery: mineur
+      - name: Listes
+        description: Ajouter une liste non ordonnée pour structurer la liste des thématiques présente. `<ul><li>`. Certaines listes possèdent du texte hors des balises `<li>`, mettre le texte dans un `<li>`. Ajouter une liste de description pour chacune des étapes de validation.
+        criterion: '9.3'
+        type: code
+        delivery: Majeur
+      - name: Disparition d'infos
+        description: Le pictogramme de la loupe disparait. Le lien ""Remonter en haut de la page"" disparait. Dans le bloc "Je trouve pas de réponse à ma question“,les informations concernant les numéros spéciaux disparaissent.
+        criterion: '10.2'
+        type: code
+        delivery: Bloquant
+      - name: Contraste des liens
+        description: Le contraste entre le lien ""https://citoyens.telerecours.fr/"" et le texte environnant n'est pas suffisant ( 1,9 au lieu de 3). Le contraste des liens et le texte environnant n'est pas suffisant (ratio de 2.6)".
+        criterion: '10.6'
+        type: code
+        delivery: Bloquant
+      - name: Visibilité du focus
+        description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur le champ `<input>` de la recherche
+        criterion: '10.7'
+        type: code
+        delivery: Bloquant
+      - name: Info donnée par la forme
+        description: Dans le bloc "Qu'est ce qu'une requête à délai contraint?", l'information est donnée par la forme (*). Ajouter un lien pertinent sur le renvoi à la note de bas de page.
+        criterion: '10.9'
+        type: code
+        delivery: Majeur
+      - name: Mise en forme CSS
+        description: le numéro spécial mis en forme avec du CSS est partiellement caché par un carré blanc, la fin du numéro est illisible.
+        criterion: '10.12'
+        type: code
+        delivery: mineur
+      - name: Absence de libellé
+        description: le champ de recherche n'a pas de libellé (aucune balise label)"
+        criterion: '11.1'
+        type: code
+        delivery: Majeur
   - name: Plan du site
     url: https://citoyens.recette.telerecours.fr/#/plan-site
     blocks:
     - name: Page 
       errors:
-      - name:
-        description:
-        type: 
-        criterion:
-        delivery:
+      - name: Titre de la page
+        description: Le titre ne reprend pas le nom du site. Par exemple, "Plan du site | Télérecours citoyens | Conseil d'Etat"
+        criterion: '9.3'
+        type: code
+        delivery: Bloquant
+      - name: Liste 
+        description: Ajouter une liste non ordonnée pour structurer l'information
+        criterion: '9.3'
+        type: code
+        delivery: Majeur
   - name: Visualisation d'un dossier
     url: https://citoyens.recette.telerecours.fr/#/historique/1175
     blocks:
