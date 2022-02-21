@@ -8,7 +8,7 @@
           description: Absence des éléments `<header>`, `<main>` et `<footer>`
           criterion: '9.2'
           type: structure
-          delivery: Bloquant
+          delivery: Majeur
         - name: Accès rapide
           description: Manque un menu d’évitement
           criterion: '12.7'
@@ -23,15 +23,15 @@
           description: Absence de landmarks
           criterion: '12.6'
           type: structure
-          delivery: Bloquant
+          delivery: Majeur
     - name: Footer
       errors:
         - name: Liens
-          status: moindre
+          status: 
           description: Les liens du pied de page n'ont pas un contraste élevé (ratio de 2.55)
           criterion: '3.2'
           type: visuel
-          delivery: Bloquant
+          delivery: Majeur
         - name: Pied de page
           description: aucune liste utilisée pour les liens, il faut mettre une liste non ordonnée
           criterion: '9.3'
@@ -90,12 +90,12 @@
             description: La note de l'astérisque * `<p _ngcontent-c7="""" class=""hors-pers-m"">` (ratio de 2.77)"
             type: visuel
             criterion: '3.2'
-            delivery: Bloquant
+            delivery: Majeur
           - name: Zone de filtrage des dossiers
             description: le champ de sélection des dossiers n'est pas assez contrasté. On ne distingue pas la bordure du champ. Absence de bordure sur l'élément `<select>`.
             type: visuel
             criterion: '3.3'
-            delivery: Bloquant
+            delivery: Majeur
           - name: Absence de titre de tableau
             description: Ajouter un attribut `aria-labelledby` sur l'élément `<h2>` précédant le `<table>` pour qu'il soit relié au tableau.
             type: texte
@@ -192,7 +192,7 @@
         description: Ajouter des éléments `<h2>` sur les titres "Se connecter avec FranceConnect" et "Se connecter avec un compte Télérecours citoyens."
         criterion: '9.1'
         type: code
-        delivery: Bloquant
+        delivery: Majeur
       - name: Liste 
         description: Dans le bloc "Vous n'avez pas de compte ?", Ajouter une liste de description `<dl>` avec les questions dans des `<dt>` et réponses dans des `<dd>`.
         criterion: '9.3'
@@ -209,12 +209,12 @@
         description: Dans les champs de connexion, les labels ne sont pas assez contrastés (ratio de 2.6) et le lien mot de passe n'est pas assez contrasté (ratio de 3.2). Dans le bloc "FranceConnect", le texte et lien sous le visuel ne sont pas assez contrastés (ratio de 3.2).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Contraste des éléments graphiques
         description: Le contour autour des champs du formulaire de connexion a un ratio de contraste insuffisant (1,4 au lieu de 3).
         criterion: '3.3'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Scripts
         description: Dans le Champ "mot de passe", l'icône "œil" ne possède pas de texte alternatif précisant sa fonction. Il n'est pas non plus accessible au clavier. | Il devrait être un bouton avec soit = un texte qui change "afficher/masquer", soit un attribut `aria-pressed`. Absence de libellé sur le bouton "S'identifier avec FranceConnect"
         criterion: '7.1'
@@ -264,7 +264,7 @@
         description: Utilisation d'élément `<h2>` pour simuler les titres des différentes parties du formulaire 
         criterion: '8.9' 
         type: code
-        delivery: Bloquant
+        delivery: Majeur
       - name: Visibilité du focus
         description: Le contraste du focus est de 2.5 et l'outline a une valeur de 0 sur les boutons "Annuler" et "Enregistrer"
         criterion: '10.7'
@@ -281,12 +281,12 @@
         description: Labels pas assez contrastés (ratio de 3.31). Les messages d'erreurs ne sont pas assez contrastés (ratio de 3.87) (rouge sur fond gris). Les messages annexes tels que la longueur du mot de passe, ne sont pas assez contrastés (vert sur fond blanc) - ratio de 3.96. Contraste de l'icône "œil" insuffisant (ratio de 3.67).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Contraste des éléments graphiques
         description: Le contraste de la bordure des champs est insuffisant (ratio de 1.39).
         criterion: '3.3'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Scripts
         description: Les icônes "changer l'image" et "vocaliser le contenu du captcha" n'ont pas d'intitulé et ne sont pas restituées aux TA. L'icône (pictogramme œil) du mot de passe, devrait être un bouton avec soit, avec un texte qui change "afficher/masquer", soit un attribut `aria-pressed`
         criterion: '7.1'
@@ -331,7 +331,7 @@
         description: Le contraste du message d'alerte n'est pas assez élevé (gris sur gris - ratio de 4). Le label n'a pas un contraste élevé (ratio de 3.31). Le message d'alerte du champ obligatoire n'a pas un contraste élevé (ratio de 3.87)
         type: visuel
         criterion: '3.2'
-        delivery: Bloquant
+        delivery: Majeur
       - name: Titre de la page
         description: Il manque le nom du site = Télérecours Citoyens
         criterion: '8.6'
@@ -353,12 +353,12 @@
         description: Le contraste de couleur du message d'envoi n'est pas assez contrasté (blanc sur vert).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Contraste d'élément graphique
         description: Le contraste du bouton de réinitialisation du mot de passe n'est pas assez élevé (ratio de 4.09 - blanc sur vert).
         criterion: '3.3'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Scripts
         description: Les icônes de décoration peuvent être restituées. Ajouter l'attribut suivant 'aria-hidden="true"`
         criterion: '7.1'
@@ -420,7 +420,7 @@
         description: le titre `<h2>' "recherche" devrait être un titre `<h1>` comme le titre "foire aux questions" et ajouter un élément `<Hn>` sur le titre du "Résultat de la recherche""
         criterion: '9.1'
         type: code
-        delivery: Bloquant
+        delivery: Majeur
       - name: Navigation au clavier
         description: L'ordre de tabulation n'est pas cohérent car le lien "remonter vers le haut de la page" n'est pas pris en compte. 
         criterion: '12.8'
@@ -437,7 +437,7 @@
         description: Dans le bloc de recherche, le contraste de la bordure des champs est insuffisant (ratio de 1.39).
         criterion: '3.3'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Absence d'intitulé
         description: Les liens qui ont le même intitulé ne renvoient pas sur la même adresse. Il faut soit expliciter le contenu du lien, soit reprendre le contenu du lien et le compléter dans l'attribut `title`
         criterion: '6.1'
@@ -522,7 +522,7 @@
         description: Les titres de blocs comme "état du dossier", "nom du dossier", "requérants", les dates des dossiers ne sont pas assez contrastés (ratio de 3.2). Les textes "de", "à" ainsi que l'accusé de lecture et la date du dossier ne sont pas assez contrastés (ratio de 3.2). Dans la modale, le contraste du label n'est pas assez fort (ratio de 3.3).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Liens
         description:  L'icône de décoration ""+"" du lien ""Ajouter un dossier / pièce"peut être restituée aux TA. Ajouter l'attribut `aria-hidden="true"` et le lien n'est pas explicite.
         criterion: '6.1'
@@ -616,7 +616,7 @@
         description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). et le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. 
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Boutons
         description: Les boutons "Précédent" / "Suivant" ne sont pas explicites. Ca devrait être des liens. Expliciter par exemple, "Précédent - Retour à la liste des dossiers" ou "Suivant - Etape 2 - Requérant". L'icône peut être restituée par les TA. Appliquer le style dans un élément `<span>` et ajouter l'attribut `aria-hidden="true"`.
         criterion: '7.1'
@@ -708,7 +708,7 @@
         description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
   - name: Dépôt de requête - étape 3 Juridiction
     url: https://citoyens.recette.telerecours.fr/#/depot-requete/juridiction
     blocks:
@@ -735,7 +735,7 @@
         description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Liens
         description: Le lien "cet article" dans l'aide de "Choississez la juridiction" n'est pas explicite. (ajouter un title qui reprend l'intitulé complet du lien avec une information supplémentaire sur la finalité du lien)
         criterion: '6.1'
@@ -812,7 +812,7 @@
         description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Le texte n'est pas assez contrasté (ratio de 3.87) dans le bloc d'alerte de cases à cocher pour valider le formulaire. Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Scripts
         description: Les blocs drag-and-drop ne sont pas restitués par les TA. Exemples de drag-and-drop accessibles (Exemple 1)[https://www.smashingmagazine.com/2018/01/dragon-drop-accessible-list-reordering/] | (Exemple 2)[https://medium.com/salesforce-ux/4-major-patterns-for-accessible-drag-and-drop-1d43f64ebf09]. Les boutons Précédent / Suivant / Enregistrer le brouillon / Modifier mes informations personnelles, les icônes peuvent être restituées par les TA. Appliquer le style dans un élément <span> et ajouter l'attribut `aria-hidden="true"`
         criterion: '7.1'
@@ -911,7 +911,7 @@
           description: Dans le bloc de point d'étapes de dépôt de requêtes, le texte n'est pas assez contrasté (ratio de 3.2). Dans le bloc d'alerte d'enregistrement du brouillon, le texte n'est pas assez contrasté (ratio de 3.9).
           criterion: '3.2'
           type: visuel
-          delivery: Bloquant
+          delivery: Majeur
         - name: Indication par la couleur
           description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné. Les labels des champs du formulaire n'ont pas un contraste élevé (ratio de 3.31).
           criterion: '3.1'
@@ -928,7 +928,7 @@
           description: Le bouton "Envoyer" du formulaire n'est pas assez contrasté (ratio de 4.9)
           criterion: '3.3'
           type: visuel
-          delivery: Bloquant
+          delivery: Majeur
   - name: Mon compte
     url: https://citoyens.recette.telerecours.fr/#/mon-profil
     blocks:
@@ -960,12 +960,12 @@
         description: le texte du message d'erreur n'est pas assez contrasté avec son arrière plan (3,9 au lieu de 4,5). Les libellés des champs du formulaire ont un ratio de contraste insuffisant entre le texte et le fond du champ (3,3 au lieu de 4,5).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Contrastes des éléments graphiques
         description: le contour autour des champs de formulaire a un ratio de contraste insuffisant (1,4 au lieu de 3). Le bouton "Enregistrer" a un ratio de contraste insuffisant entre le texte et la couleur (4,1 au lieu de 4,5).
         criterion: '3.3'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Liens
         description: Le lien "Pourquoi" n'est pas explicite, l'intitulé n'explicite pas la destination finale du lien. Ajouter de l'information dans l'attribut `title` du lien.
         criterion: '6.1'
@@ -1071,7 +1071,7 @@
         description: Le message d'information sur le code a un contraste insuffisant 2,9 entre le texte et l'arrière-plan au lieu de 4.5. Le bouton "Valider" a un ratio de contraste insuffisant entre le texte et la couleur (4,1 au lieu de 4,5).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
       - name: Indication par la couleur
         description: Le point d'étape n'est indiqué que par la couleur. Ajouter `aria-current="step"` sur le point concerné
         criterion: '3.1'
@@ -1118,4 +1118,4 @@
         description: Le texte dans la partie de l'indication d'étapes n'est pas assez contrasté (ratio de 3.2 au lieu de 4,5).
         criterion: '3.2'
         type: visuel
-        delivery: Bloquant
+        delivery: Majeur
